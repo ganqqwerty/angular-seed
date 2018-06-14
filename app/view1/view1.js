@@ -10,14 +10,14 @@ const mockedData = Promise.resolve({
             "y": 163,
             "width": 30,
             "height": 30,
-            "weight": 50
+            "weight": 100
         },
         {
             "x": 175,
             "y": 138,
             "width": 100,
             "height": 80,
-            "weight": 50
+            "weight": 0
         },
         {
             "x": 315,

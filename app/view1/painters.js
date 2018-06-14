@@ -29,9 +29,10 @@ class HeatMapPainter extends Painter {
     constructor() {
         super();
         const gradient = {
-            0.0: "rgba(000,000,255,1)",
+            0.0: "rgba(000,000,255,0.5)",
             0.2: "rgba(000,000,255,1)",
-            0.6: "rgba(000,255,50,1)",
+            0.4: "rgba(000,255,255,1)",
+            0.6: "rgba(000,255,000,1)",
             0.8: "rgba(255,255,000,1)",
             1.0: "rgba(255,000,000,1)"
         };
