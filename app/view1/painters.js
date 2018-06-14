@@ -23,11 +23,66 @@ class SimplePainter extends Painter {
 }
 
 class HeatMapPainter extends Painter {
-    paintNode(node) {
-        console.log('painting node', node)
+
+    constructor(){
+        super();
+        this.heatmapInstance = h337.create({
+            // only container is required, the rest will be defaults
+            container: document.getElementById('heatmapCanvasDiv')
+        });
+        this.paintSomeHeatMap(this.heatmapInstance);
     }
+
+
+    paintNode(node) {
+        console.log('painting node', node);
+        this.heatmapInstance.addData({
+            x: 10,
+            y: 20,
+            value: 100,
+            radius: 100
+        });
+        this.heatmapInstance.repaint();
+    }
+
+
 
     paintEdge(edge) {
 
     }
+
+    paintSomeHeatMap(heatmapInstance) {
+
+        console.log(document.getElementById('heatmapCanvasDiv'));
+        // minimal heatmap instance configuration
+
+        // now generate some random data
+        var points = [];
+        var max = 0;
+        var width = 1200;
+        var height = 1050;
+        var len = 200;
+
+        // while (len--) {
+        //     var val = Math.floor(Math.random() * 100);
+        //     max = Math.max(max, val);
+        //     var point = {
+        //         x: Math.floor(Math.random() * width),
+        //         y: Math.floor(Math.random() * height),
+        //         value: val
+        //     };
+        //     points.push(point);
+        // }
+        // heatmap data format
+        var data = {
+            max: 100,
+            min: 0,
+            data: points
+        };
+        // if you have a set of datapoints always use setData instead of addData
+        // for data initialization
+        heatmapInstance.setData(data);
+        // heatmapInstance.repaint();
+    }
+
 }
