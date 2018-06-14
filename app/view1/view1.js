@@ -4,25 +4,69 @@
 //
 
 const mockedData = Promise.resolve({
-    'nodes': [
+    "nodes": [
         {
-            'id': 'sid-E2ADBCA5-EEF2-4DCA-8E57-A083B85BC97F',
-            'weight': 100
+            "x": 100,
+            "y": 163,
+            "width": 30,
+            "height": 30,
+            "weight": 50
         },
         {
-            'id': 'sid-7901FAC1-F8AB-40D9-AB3E-DB32F0F205BC',
-            'weight': 200
+            "x": 175,
+            "y": 138,
+            "width": 100,
+            "height": 80,
+            "weight": 50
+        },
+        {
+            "x": 315,
+            "y": 135,
+            "width": 100,
+            "height": 80,
+            "weight": 50
+        },
+        {
+            "x": 460,
+            "y": 161,
+            "width": 28,
+            "height": 28,
+            "weight": 50
         }
     ],
-    'edges': [
+    "edges": [
         {
-            'id': 'sid-3A925D4C-8047-49ED-9A18-70222CDA5EEA_1',
-            'weight': 255,
-            'from': 'sid-AD05BC4B-7D09-486A-8093-90ECBD6AC07F_1',
-            'to': 'sid-AD05BC4B-7D09-486A-8093-90ECBD6AC07F_2'
+            "from": {
+                "x": 130,
+                "y": 178
+            },
+            "to": {
+                "x": 175,
+                "y": 178
+            },
+            "weight": 0
         },
         {
-            'id': 'sid-AD05BC4B-7D09-486A-8093-90ECBD6AC07F_1'
+            "from": {
+                "x": 275,
+                "y": 177
+            },
+            "to": {
+                "x": 315,
+                "y": 176
+            },
+            "weight": 30
+        },
+        {
+            "from": {
+                "x": 415,
+                "y": 175
+            },
+            "to": {
+                "x": 460,
+                "y": 175
+            },
+            "weight": 159.0823729370407
         }
     ]
 });
@@ -51,12 +95,12 @@ angular.module('myApp.view1', ['ngRoute'])
 
         /**
          * generates heatmap from the statistics
-         * @param
+         * @param heatMapData
          * @param painter: Painter
          */
         function generateHeatMap(heatMapData, painter) {
-            heatMapData.nodes.forEach((x) => painter.paintNode(x));
-            heatMapData.edges.forEach(painter.paintEdge);
+            heatMapData.nodes.forEach((node) => painter.paintNode(node));
+            heatMapData.edges.forEach((edge) => painter.paintEdge(edge, edge.weight));
         }
     }]);
 
