@@ -33,38 +33,6 @@ const NODE_BG_SUFFIX = 'bg_frame';
 
 
 
-function paintSomeHeatMap(heatmapInstance) {
-
-    console.log(document.getElementById('heatmapCanvasDiv'));
-    // minimal heatmap instance configuration
-
-    // now generate some random data
-    var points = [];
-    var max = 0;
-    var width = 1200;
-    var height = 1050;
-    var len = 200;
-
-    while (len--) {
-        var val = Math.floor(Math.random() * 100);
-        max = Math.max(max, val);
-        var point = {
-            x: Math.floor(Math.random() * width),
-            y: Math.floor(Math.random() * height),
-            value: val
-        };
-        points.push(point);
-    }
-    // heatmap data format
-    var data = {
-        max: max,
-        data: points
-    };
-    // if you have a set of datapoints always use setData instead of addData
-    // for data initialization
-    heatmapInstance.setData(data);
-    // heatmapInstance.repaint();
-}
 
 angular.module('myApp.view1', ['ngRoute'])
 
@@ -87,14 +55,8 @@ angular.module('myApp.view1', ['ngRoute'])
          * @param painter: Painter
          */
         function generateHeatMap(heatMapData, painter) {
-            heatMapData.nodes.forEach(painter.paintNode);
+            heatMapData.nodes.forEach((x) => painter.paintNode(x));
             heatMapData.edges.forEach(painter.paintEdge);
-
-            var heatmapInstance = h337.create({
-                // only container is required, the rest will be defaults
-                container: document.getElementById('heatmapCanvasDiv')
-            });
-            paintSomeHeatMap(heatmapInstance);
         }
     }]);
 
